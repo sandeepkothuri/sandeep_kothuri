@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Contact</title>
+    <!-- Add CSS links here -->
+</head>
+<body>
+    <h1>Create a New Contact</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create Contact</button>
+    </form>
+    <a href="{% url 'list_contacts' %}">Back to Contact List</a>
+    <footer>
+        <p>© Created by Sandeep Kothuri</p>
+    </footer>
+</body>
+</html>
+
+<!--this page is for create contact -->

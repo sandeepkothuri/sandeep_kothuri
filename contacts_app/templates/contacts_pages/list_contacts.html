@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <dir><dir><title>Contact List</title></dir>
+    <!-- Add CSS links here -->
+</head>
+<body>
+    <dir><dir><dir><dir><dir><dir><dir><dir><dir><dir><dir><dir><dir><dir><h1>Contact List</h1></dir>
+    <dir><a href="{% url 'create_contact' %}">Create a New Contact</a></dir>
+    <ul>
+        {% for contact in contacts %}
+        <li>
+            {{ contact.name }} - {{ contact.email }}
+            <a href="{% url 'update_contact' contact.id %}">Edit</a>
+            <a href="{% url 'delete_contact' contact.id %}">Delete</a>
+        </li>
+        {% empty %}
+        <li>No contacts found.</li>
+        {% endfor %}
+    </ul>
+    <footer>
+        <p>© Created by Sandeep Kothuri</p></dir>
+    </footer>
+</body>
+</html>
