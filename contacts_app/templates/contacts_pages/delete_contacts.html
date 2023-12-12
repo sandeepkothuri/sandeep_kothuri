@@ -2,19 +2,71 @@
 <html>
 <head>
     <title>Delete Contact</title>
-    <!-- Add CSS links here -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
+        .confirmation-box {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #888;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 10px 15px; 
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        button {
+            margin-right: 10px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Delete Contact</h1>
-    <p>Are you sure you want to delete {{ contact.name }}?</p>
-    <form method="post">
-        {% csrf_token %}
-        <button type="submit">Yes, delete this contact</button>
-    </form>
-    <a href="{% url 'list_contacts' %}">No, go back</a>
-    <footer>
+    <div class="container">
+        <h1>Delete Contact</h1>
+        <div class="confirmation-box">
+            <p>Are you sure you want to delete {{ contact.name }}?</p>
+            <form method="post">
+                {% csrf_token %}
+                <div class="btn-container">
+                    <button type="submit" class="btn btn-danger">Yes, delete this contact</button>
+                    <a href="{% url 'list_contacts' %}" class="btn btn-secondary">No, go back</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <footer class="footer">
         <p>© Created by Sandeep Kothuri</p>
     </footer>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
-<!--this page is for deleting contacts-->
