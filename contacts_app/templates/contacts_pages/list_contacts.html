@@ -1,26 +1,163 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <dir><dir><title>Contact List</title></dir>
-    <!-- Add CSS links here -->
+    <title>Contact List</title>
+    <!-- Add Bootstrap CSS link here -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
+        .contact-card, .contact-list-item {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #888;
+        }
+
+        /* Style for the Create Contact button */
+        .create-contact-btn {
+            margin-bottom: 20px;
+        }
+
+        /* Center the view buttons vertically */
+        .view-buttons {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        /* Style for the view buttons */
+        .view-buttons button {
+            margin-left: 10px;
+        }
+
+        /* Center the content within the contact cards */
+        .contact-card-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Style for contact card headers */
+        .contact-card h4 {
+            margin: 0;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        /* Style for contact card details */
+        .contact-card p {
+            margin: 0;
+            margin-bottom: 5px;
+        }
+
+        /* Style for the title with padding */
+        h1 {
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Add margin to the Edit button */
+        .btn-container .btn-primary {
+            margin-right: 10px;
+        }
+    </style>
 </head>
 <body>
-    <dir><dir><dir><dir><dir><dir><dir><dir><dir><dir><dir><dir><dir><dir><h1>Contact List</h1></dir>
-    <dir><a href="{% url 'create_contact' %}">Create a New Contact</a></dir>
-    <ul>
-        {% for contact in contacts %}
-        <li>
-            {{ contact.name }} - {{ contact.email }}
-            <a href="{% url 'update_contact' contact.id %}">Edit</a>
-            <a href="{% url 'delete_contact' contact.id %}">Delete</a>
-        </li>
-        {% empty %}
-        <li>No contacts found.</li>
-        {% endfor %}
-    </ul>
-    <footer>
-        <p>© Created by Sandeep Kothuri</p></dir>
+    <div class="container">
+        <h1>Contact List</h1>
+        <div class="row">
+            <div class="col-md-8">
+                <a href="{% url 'create_contact' %}" class="btn btn-success create-contact-btn">Create a New Contact</a>
+                <div class="row mt-4">
+                    {% for contact in contacts %}
+                    <div class="col-md-6 contact-card">
+                        <div class="contact-card-content">
+                            <h4>{{ contact.name }}</h4>
+                            <p>Email: {{ contact.email }}</p>
+                            <p>Phone Number: {{ contact.phone_number }}</p>
+                            <p>Address: {{ contact.address }}</p>
+                            <div class="btn-container">
+                                <a href="{% url 'update_contact' contact.id %}" class="btn btn-primary">Edit</a>
+                                <a href="{% url 'delete_contact' contact.id %}" class="btn btn-danger">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <div class="col-md-12">
+                        <p>No contacts found.</p>
+                    </div>
+                    {% endfor %}
+                </div>
+                <ul class="list-group" style="display: none;" id="contactsList">
+                    {% for contact in contacts %}
+                    <li class="list-group-item contact-list-item">
+                        <div class="contact-card-content">
+                            <h4>{{ contact.name }}</h4>
+                            <p>Email: {{ contact.email }}</p>
+                            <p>Phone Number: {{ contact.phone_number }}</p>
+                            <p>Address: {{ contact.address }}</p>
+                            <div class="btn-container">
+                                <a href="{% url 'update_contact' contact.id %}" class="btn btn-primary">Edit</a>
+                                <a href="{% url 'delete_contact' contact.id %}" class="btn btn-danger">Delete</a>
+                            </div>
+                        </div>
+                    </li>
+                    {% empty %}
+                    <li class="list-group-item">No contacts found.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <div class="view-buttons text-right">
+                    <button id="gridViewBtn" class="btn btn-primary">Grid View</button>
+                    <button id="listViewBtn" class="btn btn-secondary">List View</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>© Created by Sandeep Kothuri</p>
     </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#contactsList").hide();
+            $("#gridViewBtn").click(function() {
+                $("#contactsList").hide();
+                $("#contactsGrid").show();
+            });
+            $("#listViewBtn").click(function() {
+                $("#contactsGrid").hide();
+                $("#contactsList").show();
+            });
+        });
+    </script>
 </body>
 </html>
-<!--this page is for list contacts -->
