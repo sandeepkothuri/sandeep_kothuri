@@ -51,16 +51,5 @@ def delete_contact(request, pk):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
     
 
