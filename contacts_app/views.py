@@ -45,6 +45,12 @@ def delete_contact(request, pk):
         return redirect('list_contacts')
     return render(request, 'contacts_pages/delete_contacts.html', {'contact': contact})
 
+from django.shortcuts import render, get_object_or_404
+
+def view_contact(request, pk):
+    contact = get_object_or_404(Contact, pk=pk)
+    return render(request, 'contacts_pages/view_contact.html', {'contact': contact})
+
 
 
 
