@@ -5,8 +5,7 @@ class Contact(models.Model):
     email = models.EmailField(unique=True)
     phone_number = models.CharField(max_length=15, blank=True)
     address = models.TextField(blank=True)
-    date_added = models.DateTimeField(auto_now_add=True)
-    notes = models.TextField(blank=True)
 
     def __str__(self):
         return self.name
+

@@ -7,3 +7,5 @@ class ContactForm(forms.ModelForm):
     class Meta:
         model = Contact
         fields = '__all__'  # Include all fields from your Contact model, or specify fields explicitly
+
+
