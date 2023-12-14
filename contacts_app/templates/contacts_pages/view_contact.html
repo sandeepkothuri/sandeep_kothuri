@@ -5,6 +5,13 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
+<style>
+    footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #888;
+        }
+</style>
 <body>
     <div class="container mt-5">
         <div class="card">
@@ -14,10 +21,13 @@
                 <p class="card-text"><strong>Phone Number:</strong> {{ contact.phone_number }}</p>
                 <p class="card-text"><strong>Address:</strong> {{ contact.address }}</p>
                 <a href="{% url 'list_contacts' %}" class="btn btn-primary">Back to Contact List</a>
+               
             </div>
         </div>
     </div>
-
+    <footer>
+        <p>© Created by Sandeep Kothuri</p>
+    </footer>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
